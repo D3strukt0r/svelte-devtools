@@ -13,23 +13,23 @@
     "package:chrome": "yarpm run build:icon && yarpm run build:chrome && web-ext build -s dest"
   },
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.1.0",
     "cross-env": "^7.0.3",
     "http-serve": "^1.0.1",
-    "postcss": "^8.2.2",
+    "postcss": "^8.4.26",
     "postcss-sorting": "^6.0.0",
-    "prettier": "^2.2.1",
-    "prettier-plugin-svelte": "^2.3.0",
-    "rollup": "^2.35.1",
+    "prettier": "^2.8.8",
+    "prettier-plugin-svelte": "^2.10.1",
+    "rollup": "^2.79.1",
     "rollup-plugin-css-only": "^3.1.0",
     "rollup-plugin-jscc": "^2.0.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-svelte": "^7.0.0",
-    "rollup-plugin-transform-input": "git+https://github.com/RedHatter/rollup-plugin-transform-input.git",
-    "svelte": "^3.20.1",
-    "svelte-listener": "git+https://github.com/RedHatter/svelte-listener.git",
-    "svgexport": "^0.4.1",
-    "web-ext": "^6.1.0",
-    "yarpm": "^1.1.1"
+    "rollup-plugin-svelte": "^7.1.6",
+    "rollup-plugin-transform-input": "github:RedHatter/rollup-plugin-transform-input",
+    "svelte": "^3.59.2",
+    "svelte-listener": "github:RedHatter/svelte-listener",
+    "svgexport": "^0.4.2",
+    "web-ext": "^6.8.0",
+    "yarpm": "^1.2.0"
   },
   "engines": {
     "node": ">=11.14.0"

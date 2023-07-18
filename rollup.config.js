@@ -1,6 +1,6 @@
 import * as fs from 'fs'
 import svelte from 'rollup-plugin-svelte'
-import resolve from 'rollup-plugin-node-resolve'
+import resolve from '@rollup/plugin-node-resolve'
 import css from 'rollup-plugin-css-only'
 import jscc from 'rollup-plugin-jscc'
 

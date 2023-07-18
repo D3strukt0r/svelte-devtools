@@ -77,8 +77,8 @@ Clone this repository and run the package script.
 ```
 git clone https://github.com/RedHatter/svelte-devtools.git
 cd svelte-devtools
-npm install
-npm run package:firefox
+pnpm install
+pnpm run package:firefox
 ```
 This should build the codebase and output a zip file under `web-ext-artifacts`.
 
@@ -92,8 +92,8 @@ Clone this repository and run the package script.
 ```
 git clone https://github.com/RedHatter/svelte-devtools.git
 cd svelte-devtools
-npm install
-npm run package:chrome
+pnpm install
+pnpm run package:chrome
 ```
 This should build the codebase and output a zip file under `web-ext-artifacts`.
 
