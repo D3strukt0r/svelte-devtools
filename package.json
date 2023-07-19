@@ -1,37 +1,52 @@
 {
   "name": "svelte-devtools",
   "version": "1.3.0",
-  "description": "Browser devtools extension for debugging Svelte applications.",
-  "repository": "github:RedHatter/svelte-devtools",
+  "description": "Browser DevTools extension for debugging Svelte applications.",
+  "repository": "github:D3strukt0r/svelte-devtools",
   "license": "MIT",
+  "type": "module",
   "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "lint": "prettier --plugin-search-dir . --check . && eslint .",
+    "format": "prettier --plugin-search-dir . --write .",
     "build:firefox": "cross-env TARGET=firefox rollup -c",
     "build:chrome": "cross-env TARGET=chrome rollup -c",
-    "build:icon": "node ./scripts/buildIcons.mjs",
-    "dev": "http-serve test/public -p 8940 & web-ext run -s dest -u http://127.0.0.1:8940 -u about:debugging && kill $!",
+    "build:icon": "node ./bin/build-icons.mjs",
+    "dev2": "http-serve test/public -p 8940 & web-ext run -s dest -u http://127.0.0.1:8940 -u about:debugging && kill $!",
     "package:firefox": "yarpm run build:icon && yarpm run build:firefox && web-ext build -s dest",
     "package:chrome": "yarpm run build:icon && yarpm run build:chrome && web-ext build -s dest"
   },
+  "dependencies": {
+    "@crxjs/vite-plugin": "^1.0.14",
+    "@sveltejs/vite-plugin-svelte": "^2.4.2",
+    "svelte": "^4.1.0",
+    "vite": "^4.4.4"
+  },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^15.1.0",
-    "cross-env": "^7.0.3",
-    "http-serve": "^1.0.1",
-    "postcss": "^8.4.26",
-    "postcss-sorting": "^6.0.0",
-    "prettier": "^2.8.8",
+    "@antfu/ni": "^0.21.5",
+    "@tsconfig/svelte": "^5.0.0",
+    "@types/chrome": "^0.0.241",
+    "@types/node": "^20.4.2",
+    "@typescript-eslint/eslint-plugin": "^6.1.0",
+    "@typescript-eslint/parser": "^6.1.0",
+    "eslint": "^8.45.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-import-resolver-typescript": "^3.5.5",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-svelte": "^2.32.2",
+    "prettier": "^3.0.0",
     "prettier-plugin-svelte": "^2.10.1",
-    "rollup": "^2.79.1",
-    "rollup-plugin-css-only": "^3.1.0",
-    "rollup-plugin-jscc": "^2.0.0",
-    "rollup-plugin-svelte": "^7.1.6",
-    "rollup-plugin-transform-input": "github:RedHatter/rollup-plugin-transform-input",
-    "svelte": "^3.59.2",
-    "svelte-listener": "github:RedHatter/svelte-listener",
+    "svelte-check": "^3.4.6",
     "svgexport": "^0.4.2",
-    "web-ext": "^6.8.0",
-    "yarpm": "^1.2.0"
+    "tslib": "^2.6.0",
+    "typescript": "^5.1.6"
   },
   "engines": {
-    "node": ">=11.14.0"
+    "node": ">=14.18.0"
   }
 }
