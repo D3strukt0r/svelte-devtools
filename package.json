@@ -2,16 +2,51 @@
   "name": "svelte-devtools",
   "version": "1.3.0",
   "description": "Browser DevTools extension for debugging Svelte applications.",
-  "repository": "github:D3strukt0r/svelte-devtools",
+  "keywords": [
+    "chrome",
+    "extension",
+    "svelte"
+  ],
+  "homepage": "https://github.com/D3strukt0r/svelte-devtools",
+  "bugs": {
+    "url": "https://github.com/D3strukt0r/svelte-devtools/issues",
+    "email": "gh-contact@d3st.dev"
+  },
   "license": "MIT",
-  "type": "module",
+  "author": {
+    "name": "D3strukt0r",
+    "email": "gh-contact@d3st.dev",
+    "url": "https://github.com/D3strukt0r"
+  },
+  "funding": [
+    {
+      "type": "github-sponsors",
+      "url": "https://github.com/sponsors/D3strukt0r"
+    },
+    {
+      "type": "patreon",
+      "url": "https://www.patreon.com/d3strukt0r"
+    },
+    {
+      "type": "opencollective",
+      "url": "https://opencollective.com/d3strukt0r"
+    }
+  ],
+  "repository": "github:D3strukt0r/svelte-devtools",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev:ts": "tsc --watch --noEmit",
+    "dev:app": "vite",
+    "dev": "npm-run-all --parallel dev:*",
+    "ts:check": "tsc --noEmit",
+    "build:app": "vite build",
+    "build": "npm-run-all --serial build:app",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "lint": "prettier --plugin-search-dir . --check . && eslint .",
     "format": "prettier --plugin-search-dir . --write .",
+    "ts-node": "ts-node --esm --project tsconfig.tsnode.json",
+    "setup:build-icons": "nr ts-node ./bin/build-icons.ts",
+    "setup": "npm-run-all --parallel setup:*",
     "build:firefox": "cross-env TARGET=firefox rollup -c",
     "build:chrome": "cross-env TARGET=chrome rollup -c",
     "build:icon": "node ./bin/build-icons.mjs",
@@ -19,14 +54,13 @@
     "package:firefox": "yarpm run build:icon && yarpm run build:firefox && web-ext build -s dest",
     "package:chrome": "yarpm run build:icon && yarpm run build:chrome && web-ext build -s dest"
   },
-  "dependencies": {
-    "@crxjs/vite-plugin": "^1.0.14",
-    "@sveltejs/vite-plugin-svelte": "^2.4.2",
-    "svelte": "^4.1.0",
-    "vite": "^4.4.4"
-  },
   "devDependencies": {
     "@antfu/ni": "^0.21.5",
+    "@crxjs/vite-plugin": "^1.0.14",
+    "@sveltejs/vite-plugin-svelte": "^2.4.3",
+    "@tsconfig/esm": "^1.0.4",
+    "@tsconfig/node20": "^20.1.0",
+    "@tsconfig/strictest": "^2.0.1",
     "@tsconfig/svelte": "^5.0.0",
     "@types/chrome": "^0.0.241",
     "@types/node": "^20.4.2",
@@ -39,14 +73,21 @@
     "eslint-import-resolver-typescript": "^3.5.5",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-svelte": "^2.32.2",
+    "npm-run-all": "^4.1.5",
     "prettier": "^3.0.0",
     "prettier-plugin-svelte": "^2.10.1",
+    "svelte": "^4.1.1",
     "svelte-check": "^3.4.6",
     "svgexport": "^0.4.2",
+    "ts-node": "^10.9.1",
     "tslib": "^2.6.0",
-    "typescript": "^5.1.6"
+    "typescript": "^5.1.6",
+    "vite": "^4.4.7",
+    "web-ext": "^7.6.2"
   },
   "engines": {
     "node": ">=14.18.0"
-  }
+  },
+  "private": true,
+  "type": "module"
 }

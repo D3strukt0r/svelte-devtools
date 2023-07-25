@@ -1,9 +1,10 @@
 import { defineManifest } from '@crxjs/vite-plugin';
 import { version, description } from './package.json';
 
+const title = 'Svelte DevTools';
 const names = {
-  build: 'Svelte DevTools',
-  serve: `[INTERNAL] Svelte DevTools`,
+  build: title,
+  serve: `[HMR] ${title}`,
 };
 
 export default defineManifest(async (env) => ({
@@ -11,12 +12,12 @@ export default defineManifest(async (env) => ({
   name: names[env.command],
   version,
   description,
+  // https://stackoverflow.com/a/60184542/4156752
   icons: {
-    16: 'icon-16.png',
-    24: 'icon-24.png',
-    48: 'icon-48.png',
-    96: 'icon-96.png',
-    128: 'icon-128.png',
+    16: 'icons/16.png', // used as the favicon for an extension's pages
+    32: 'icons/32.png',
+    48: 'icons/48.png', // used in the extensions management page (chrome://extensions)
+    128: 'icons/128.png', // used during installation and by the Chrome Web Store
   },
   background: {
     service_worker: 'src/background/index.js',
